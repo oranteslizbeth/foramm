@@ -80,6 +80,7 @@
 
             // Start the typewriter effect for the message
             let message = `
+                for ash.
                 i wanted to express this in a way where i can show you how much you mean to me. 
                 i know you don't want to hear from me, but i just wanted to give you this one last thing to show that i really do care for you and i always will. 
                 you're the only one who has access to this website, since i made it password protected and i would appreciate if you could go through it, start to finish. 
@@ -89,6 +90,8 @@
             let messageElement = document.getElementById("message");
             messageElement.style.display = "block";
             typeWriterEffect(message, messageElement);
+
+            document.getElementById("play-button").style.display = "none"; 
         }    
 
         function typeWriterEffect(text, element, speed = 50) {
@@ -103,8 +106,6 @@
             type();
         }
     </script>
-
-    <div id="top-left">for ash...</div>
 
 </body>
 </html>
