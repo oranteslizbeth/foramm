@@ -39,7 +39,7 @@
             margin-top: 20px;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 2px solid white;
+            border-right: 2px solid rgb(0, 0, 0);
             display: none;
             width: 100%;
             max-width: 800px;
@@ -53,14 +53,12 @@
             left: 20px;
             font-size: 26px;
             font-weight: lighter;
-            color: white;
+            color: rgb(0, 0, 0);
         }
 
     </style>
 </head>
 <body>
-    <div id="top-left">for ash...</div>
-
     <button onclick="startExperience()">play</button>
 
     <p id="message"></p>
@@ -71,15 +69,23 @@
     
     <script>
         function startExperience() {
-            let audio = document.getElementById("bg-music")
+            //the background music
+            let audio = document.getElementById("bg-music");
             audio.play().catch(error => console.log("autoplay blocked: ", error));
 
-            let message =
+            //the display of "for ash..." text
+            setTimeout(function() {
+                document.getElementById("top-left").style.display = "block"; // Show the "For Ash..." text
+            }, 1000); // Show after 1 second delay
+
+            // Start the typewriter effect for the message
+            let message = `
                 i wanted to express this in a way where i can show you how much you mean to me. 
                 i know you don't want to hear from me, but i just wanted to give you this one last thing to show that i really do care for you and i always will. 
                 you're the only one who has access to this website, since i made it password protected and i would appreciate if you could go through it, start to finish. 
                 (you dont have to though ofc, but i would like it if you did (i had to learn the basics of a different language and it took a really long time))
-            ;
+            `;
+
             let messageElement = document.getElementById("message");
             messageElement.style.display = "block";
             typeWriterEffect(message, messageElement);
@@ -97,6 +103,8 @@
             type();
         }
     </script>
+
+    <div id="top-left">for ash...</div>
 
 </body>
 </html>
