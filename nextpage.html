@@ -54,36 +54,23 @@
             font-size: 24px;
             font-weight: lighter;
             margin-top: 20px;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 2px solid rgb(0, 0, 0);
+            white-space: pre-line;
             display: none;
-            width: 100%;
             max-width: 800px;
-            margin: 0 auto;
             padding: 10px;
-        }
-
-        #top-left {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 26px;
-            font-weight: lighter;
-            color: rgb(0, 0, 0);
         }
 
     </style>
 </head>
 <body>
-    <div id="photo-line">
+    <div class="image-container">
         <img src="IMG_1986.JPG" alt="photo 1">
         <img src="IMG_2281.JPG" alt="photo 2">
         <img src="IMG_2521.JPG" alt="photo 3">
-        <img src="IMG_3602.JPG" alt="photo 4"
+        <img src="IMG_3602.JPG" alt="photo 4">
     </div>
     
-    <button onclick="startExperience()">play</button>
+    <button id="play-button" onclick="startExperience()">play</button>
 
     <p id="message"></p>
 
@@ -93,14 +80,12 @@
     
     <script>
         function startExperience() {
+
+            document.getElementById("play-button").style.display = "none";
+
             //the background music
             let audio = document.getElementById("bg-music");
             audio.play().catch(error => console.log("autoplay blocked: ", error));
-
-            //the display of "for ash..." text
-            setTimeout(function() {
-                document.getElementById("top-left").style.display = "block"; // Show the "For Ash..." text
-            }, 1000); // Show after 1 second delay
 
             // Start the typewriter effect for the message
             let message = `
@@ -115,7 +100,6 @@
             messageElement.style.display = "block";
             typeWriterEffect(message, messageElement);
 
-            document.getElementById("play-button").style.display = "none"; 
         }    
 
         function typeWriterEffect(text, element, speed = 50) {
