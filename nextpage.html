@@ -81,7 +81,7 @@
     </audio>
     
     <script>
-        let currentSection = 0; // Keeps track of current section
+        let currentSection = 0; // Keeps track of the current section
 
         function startExperience() {
             document.getElementById("play-button").style.display = "none";
@@ -92,13 +92,10 @@
             let messageElement = document.getElementById("message");
             messageElement.style.display = "block";
 
-            let message1 = `
-                for ash.
-                i wanted to express this in a way where i can show you how much you mean to me. 
-                i know you don't want to hear from me, but i just wanted to give you this one last thing to show that i really do care for you and i always will. 
-                you're the only one who has access to this website, since i made it password protected and i would appreciate if you could go through it, start to finish. 
-                (you dont have to though ofc, but i would like it if you did (i had to learn the basics of a different language and it took a really long time))
-            `;
+            let message1 = "for ash. i wanted to express this in a way where i can show you how much you mean to me. "
+                + "i know you don't want to hear from me, but i just wanted to give you this one last thing to show that i really do care for you and i always will. "
+                + "you're the only one who has access to this website, since i made it password protected. i would appreciate it if you could go through it, start to finish. "
+                + "(you dont have to though ofc, but i would like it if you did (i had to learn the basics of a different language and it took a really long time))";
 
             typeWriterEffect(message1, messageElement, () => {
                 document.getElementById("next-button").style.display = "block";
@@ -111,28 +108,19 @@
 
             // Sections of text
             let messages = [
-                `
-                i never really knew how to express myself well in words, 
-                so i thought maybe doing this would help you understand just how much i mean it.  
-                from the first day we met, i knew you were special.
-                i know the odds weren't in our favor at the time, but it felt right whenever i was with you.
-                `,
-                `
-                every moment with you was special to me, and even though things didn’t work out the way we hoped, 
-                i will always treasure the time we spent together. 
-                you truly made everyday feel special, even if we weren't doing much 
-                and i am really sorry i never expressed in a better way.    
-                i remember all the little things, the late-night talks, the way you'd smile when something made you happy, 
-                the way we could just sit in silence and it would still feel comforting. 
-                i don’t know if this means anything to you now, but to me, those were some of the happiest moments of my life.
-                you really deserved the best version of me and i really don't know why i didn't give it to you.
-                i really hope this isn't the end of our story, i really want to grow and show you that i can be the 
-                partner you want to be with if our paths ever cross again.
-                i hope this shows you even a fraction of how important you are to me.
-                i love you and i always will.
-                i enjoyed every second and i wish i could've been better because that's what you deserve.
-                liz
-                `
+                "i never really knew how to express myself well in words, so i thought maybe doing this would help you understand just how much i mean it. "
+                + "from the first day we met, i knew you were special. i know the odds weren't in our favor at the time, but it felt right whenever i was with you.",
+
+                "every moment with you was special to me, and even though things didn’t work out the way we hoped, i will always treasure the time we spent together. "
+                + "you truly made every day feel special, even if we weren't doing much, and i am really sorry i never expressed it in a better way. "
+                + "i remember all the little things, the late-night talks, the way you'd smile when something made you happy, the way we could just sit in silence and it would still feel comforting. "
+                + "i don’t know if this means anything to you now, but to me, those were some of the happiest moments of my life. "
+                + "you really deserved the best version of me and i really don't know why i didn't give it to you. "
+                + "i really hope this isn't the end of our story, i really want to grow and show you that i can be the partner you want (if our paths ever cross again). "
+                + "i hope this shows you even a fraction of how important you are to me. "
+                + "i enjoyed every second and i wish i could've been better because that's what you deserve."
+                + "i love you and i always will. "
+
             ];
 
             nextButton.style.display = "none"; // Hide button temporarily
@@ -145,18 +133,18 @@
                 if (currentSection < messages.length) {
                     nextButton.style.display = "block"; // Show "Next" button if more messages exist
                 } else {
-                    // Hide "Next" button and show final message
-                    nextButton.style.display = "none";
+                    // Show final message and remove the next button
                     setTimeout(() => {
                         messageElement.innerHTML = ""; // Clear previous text
-                        typeWriterEffect("i love you. nonetheless, thank you for the memories.- liz <3", messageElement);
-                    }, 1000); // Small delay before showing final message
+                        typeWriterEffect("nonetheless, thank you for the memories. - liz <3", messageElement);
+                    }, 1000);
                 }
             });
         }
 
         function typeWriterEffect(text, element, callback = null, speed = 50) {
             let i = 0;
+            element.innerHTML = ""; // Reset text before starting
             function type() {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
@@ -166,11 +154,8 @@
                     callback();
                 }
             }
-            element.innerHTML = ""; // Reset text before starting
             type();
         }
     </script>
 </body>
 </html>
-
-
