@@ -17,6 +17,21 @@
             height: 100vh;
         }
 
+        .image-container {
+            display: flex;
+            justify-content: center; /* center the images horizontally */
+            align-items: center;
+            gap: 10px; /* spacing between the images */
+            margin-bottom: 30px; /*space between images and text */
+        }
+
+        /* style for each image */
+        .image-container img {
+            width: 80px; /* size of each image */
+            height: 80px; /* size of each image */
+            border-radius: 10px; /* rounded corners for images */
+        }
+
         button {
             padding: 10px 20px;
             font-size: 26px;
@@ -27,6 +42,7 @@
             background-color: white;
             color: black;
             margin-top: 30px;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         button:hover {
@@ -59,6 +75,13 @@
     </style>
 </head>
 <body>
+    <div id="photo-line">
+        <img src="IMG_1986.JPG" alt="photo 1">
+        <img src="IMG_2281.JPG" alt="photo 2">
+        <img src="IMG_2521.JPG" alt="photo 3">
+        <img src="IMG_3602.JPG" alt="photo 4"
+    </div>
+    
     <button onclick="startExperience()">play</button>
 
     <p id="message"></p>
