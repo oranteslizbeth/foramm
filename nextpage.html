@@ -72,7 +72,7 @@
     
     <button id="play-button" onclick="startExperience()">play</button>
 
-    <p id="message style="display:none;"></p>
+    <p id="message" style="display: none;"></p>
 
     <button id="next-button" style="display: none;" onclick="showNextMessage()">next</button>
 
@@ -81,7 +81,7 @@
     </audio>
     
     <script>
-        let currentSection = 0; // keeps track of which section is being displayed
+        let currentSection = 0; // Keeps track of current section
 
         function startExperience() {
             document.getElementById("play-button").style.display = "none";
@@ -109,15 +109,15 @@
             let messageElement = document.getElementById("message");
             let nextButton = document.getElementById("next-button");
 
-    // sections of text
+            // Sections of text
             let messages = [
                 `
                 i never really knew how to express myself well in words, 
                 so i thought maybe doing this would help you understand just how much i mean it.  
                 from the first day we met, i knew you were special.
                 i know the odds weren't in our favor at the time, but it felt right whenever i was with you.
-            `,
-            `
+                `,
+                `
                 every moment with you was special to me, and even though things didn’t work out the way we hoped, 
                 i will always treasure the time we spent together. 
                 you truly made everyday feel special, even if we weren't doing much 
@@ -132,40 +132,42 @@
                 i love you and i always will.
                 i enjoyed every second and i wish i could've been better because that's what you deserve.
                 liz
-            `
-        ];
+                `
+            ];
 
-        nextButton.style.display = "none";
-        messageElement.innerHTML = ""; // clear current message
+            nextButton.style.display = "none"; // Hide button temporarily
+            messageElement.innerHTML = ""; // Clear previous message
 
-    // display the next message
-        typeWriterEffect(messages[currentSection], messageElement, () => {
-            currentSection++;
+            // Display the next message
+            typeWriterEffect(messages[currentSection], messageElement, () => {
+                currentSection++;
 
-            if (currentSection < messages.length) {
-                nextButton.style.display = "block"; // Show Next button for the second section
-            } else {
-            // after the second section, show the final message automatically
-                setTimeout(() => {
-                    messageElement.innerHTML = ""; // Clear previous text
-                    typeWriterEffect("i love you. nonetheless, thank you for the memories.- liz <3", messageElement);
-                }, 1000); // Small delay before showing final message
-            }
-        });
-    }
-
-    function typeWriterEffect(text, element, callback = null, speed = 50) {
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            } else if (callback) {
-                callback();
-            }
+                if (currentSection < messages.length) {
+                    nextButton.style.display = "block"; // Show "Next" button if more messages exist
+                } else {
+                    // Hide "Next" button and show final message
+                    nextButton.style.display = "none";
+                    setTimeout(() => {
+                        messageElement.innerHTML = ""; // Clear previous text
+                        typeWriterEffect("i love you. nonetheless, thank you for the memories.- liz <3", messageElement);
+                    }, 1000); // Small delay before showing final message
+                }
+            });
         }
-        type();
+
+        function typeWriterEffect(text, element, callback = null, speed = 50) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            element.innerHTML = ""; // Reset text before starting
+            type();
         }
     </script>
 </body>
